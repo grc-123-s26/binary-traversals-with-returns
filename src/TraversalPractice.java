@@ -11,9 +11,14 @@ public class TraversalPractice {
      * @param node the root of the tree
      */
     public static void printLargeNodesPostOrder(TreeNode node) {
+        if(node == null) return;
+        printLargeNodesPostOrder(node.left);
+        printLargeNodesPostOrder(node.right);
+        if(node.data > 1000){
+            System.out.println(node.data);
 
     }
-
+    }
     /**
      * Prints only the negative values of nodes of a tree, traversing in-order.
      * 
@@ -25,7 +30,12 @@ public class TraversalPractice {
      * @param node the root of the tree
      */
     public static void printNegativeNodesInOrder(TreeNode node) {
-
+        if(node ==null) return;
+        printNegativeNodesInOrder(node.left);
+        if(node.data<0){
+            System.out.println(node.data);
+        }
+        printNegativeNodesInOrder(node.right);
     }
 
     /**
@@ -38,7 +48,12 @@ public class TraversalPractice {
      * @param node the root of the tree
      */
     public static void printOddNodesPreOrder(TreeNode node) {
-
+    if(node==null) return;
+    if(node.data%2 != 0){
+        System.out.println(node.data);
+    }
+    printOddNodesPreOrder(node.left);
+    printOddNodesPreOrder(node.right);
     }
     
     /**
@@ -65,7 +80,13 @@ public class TraversalPractice {
      * @return the sum of the leaf node values
      */
     public static int sumLeafNodes(TreeNode node) {
-        return -1;
+        if(node == null) return 0;
+        int leftCount = sumLeafNodes(node.left);
+        int rightCount = sumLeafNodes(node.right);
+        if(leftCount==0 && rightCount==0){
+            return node.data; 
+        }
+        return leftCount + rightCount; 
     }
 
     /**
@@ -92,7 +113,11 @@ public class TraversalPractice {
      * @return the number of nodes in the tree
      */
     public static int size(TreeNode node) {
-        return -1;
+        if(node==null)return 0;
+        int leftCount= size(node.left);
+        int rightCount= size(node.right);
+        return leftCount + rightCount +1; 
+
     }
 
     /**
@@ -119,7 +144,11 @@ public class TraversalPractice {
      * @return the count of branch nodes in the tree
      */
     public static int branchCount(TreeNode node) {
-        return -1;
+        if(node==null) return 0;
+        if(node.left== null && node.right == null){
+            return 0;
+        }
+        return 1+branchCount(node.left)+branchCount(node.right);
     }
 
 
@@ -147,6 +176,18 @@ public class TraversalPractice {
      * @return the count of branch nodes in the tree
      */
     public static int max(TreeNode node) {
+        if(node == null)
         return Integer.MIN_VALUE;
+    int max = node.data;
+    int leftM= max(node.left);
+    int rightM= max(node.right);
+    if(leftM > max){
+        max = leftM;
     }
+    if(rightM > max){
+        max = rightM;
+    }
+    return max; 
+    }
+    
 }

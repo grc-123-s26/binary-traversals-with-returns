@@ -2,6 +2,7 @@ public class TreeNode {
     public int data;
     public TreeNode left;
     public TreeNode right;
+    public char[] value;
 
     public TreeNode(int data) {
         this(data, null, null);

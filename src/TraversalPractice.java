@@ -132,7 +132,12 @@ public class TraversalPractice {
      * @return the number of nodes in the tree
      */
     public static int size(TreeNode node) {
-        return -1;
+        if (node == null) return 0;
+
+        int countLeftTree = size(node.left);
+        int countRightTree = size(node.right);
+        int totalCount = countLeftTree + countRightTree + 1;
+        return totalCount;
     }
 
     /**

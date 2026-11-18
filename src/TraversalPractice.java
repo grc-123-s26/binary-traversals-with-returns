@@ -51,7 +51,14 @@ public class TraversalPractice {
      * @param node the root of the tree
      */
     public static void printOddNodesPreOrder(TreeNode node) {
-        
+        if (node == null) return;
+
+        if (node.data % 2 != 0) {
+            System.out.println(node.data);
+        }
+
+        printOddNodesPreOrder(node.left);
+        printOddNodesPreOrder(node.right);
     }
     
     /**
@@ -78,8 +85,28 @@ public class TraversalPractice {
      * @return the sum of the leaf node values
      */
     public static int sumLeafNodes(TreeNode node) {
-        return -1;
+        if (node == null) return 0;
+
+        int total = 0;
+
+        if (node.left == null && node.right == null) {
+            total += node.data;
+        }
+
+        total += sumLeafNodes(node.left);
+        total += sumLeafNodes(node.right);
+
+        return total;
     }
+
+    /*
+    if (current == null) return 0;
+
+    int leftSubtreeCount = countNodes(current.left);
+    int rightSubtreeCount = countNodes(current.right);
+    int totalCount = leftSubtreeCount + rightSubtreeCount + 1;
+    return totalCount;
+    */
 
     /**
      * Returns the total count of nodes in the tree.

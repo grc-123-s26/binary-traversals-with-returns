@@ -81,13 +81,16 @@ public class TraversalPractice {
      */
     public static int sumLeafNodes(TreeNode node) {
         if(node == null) return 0;
-        
-        sumLeafNodes(node.left);
-        sumLeafNodes(node.right);
-            if(node.left == null && node.right == null) {
-                countLeafs = node.data;
+
+        int total = 0;
+        if(node.left == null && node.right == null) {
+        total += node.data; 
         }
-        return countRightLeafs + countLeftLeafs;
+
+        total += sumLeafNodes(node.left);
+        total += sumLeafNodes(node.right);
+
+        return total;
     }
 
     /**
@@ -114,7 +117,7 @@ public class TraversalPractice {
      * @return the number of nodes in the tree
      */
     public static int size(TreeNode node) {
-        return -1;
+        return 0;
     }
 
     /**

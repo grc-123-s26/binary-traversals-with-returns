@@ -1,3 +1,5 @@
+
+
 public class TraversalPractice {
     /**
      * Prints only the values of nodes of a tree that are strictly larger than
@@ -164,7 +166,16 @@ public class TraversalPractice {
      * @return the count of branch nodes in the tree
      */
     public static int branchCount(TreeNode node) {
-        return -1;
+        if (node == null) return 0;
+
+        if (node.left == null && node.right == null) {
+            return 0;
+        }
+
+        int countLeftTree = branchCount(node.left);
+        int countRightTree = branchCount(node.right);
+        int totalCount = countLeftTree + countRightTree + 1;
+        return totalCount;
     }
 
 

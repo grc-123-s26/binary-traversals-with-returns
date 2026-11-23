@@ -132,8 +132,15 @@ public class TraversalPractice {
      * @param node the root of the tree
      * @return the number of nodes in the tree
      */
-    public static int size(TreeNode node) {
-        return -1;
+    public static int size(TreeNode node) 
+    {
+        if(node == null){return 0;}
+        int TotalCount = 0;
+        TotalCount += 1;
+        int left = size(node.left);
+        int right = size(node.right);
+        TotalCount += left + right;
+        return TotalCount;
     }
 
     /**

@@ -185,13 +185,16 @@ public class TraversalPractice {
         if (node == null) {
             return Integer.MIN_VALUE;
         }
-        int leftValue = max(node.left);
-        int rightValue = max(node.right);
-        int maxValue = 0;
-        if (leftValue > rightValue) {
-            maxValue = node.left.data;
-        } else if (rightValue > leftValue) {
-            maxValue = node.right.data;
+        //check left against current
+        //assign maxValue then, check right against maxValue
+        int leftMax = max(node.left); 
+        int rightMax = max(node.right); 
+        int maxValue = node.data; //current value
+        if (leftMax > node.data) {
+            maxValue = leftMax;
+        }
+        if (rightMax > maxValue) {
+            maxValue = rightMax;
         }
         return maxValue;
     }
